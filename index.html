@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DRUMKIT</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="keys">
+  <div class="key" data-key="73">
+  <kbd>I</kbd>
+  <span>TING</span>
+  </div>
+  <div class="key" data-key="65">
+  <kbd>A</kbd>
+  <span>RHTHYM</span>
+  </div>
+  <div class="key" data-key="85">
+  <kbd>U</kbd>
+  <span>CYBER</span>
+  </div>
+  <div class="key" data-key="74">
+  <kbd>J</kbd>
+  <span>HAMLET</span>
+  </div>
+  <div class="key" data-key="75">
+  <kbd>K</kbd>
+  <span>WRONG</span>
+  </div>
+  <div class="key" data-key="84">
+  <kbd>T</kbd>
+  <span>WRT</span>
+  </div>
+  <div class="key" data-key="68">
+  <kbd>D</kbd>
+  <span>NAUGHTY</span></div>
+  <div class="key" data-key="71">
+  <kbd>G</kbd>
+  <span>BEATS</span>
+  </div>
+  <div class="key" data-key="66">
+  <kbd>B</kbd>
+  <span>MUSIC</span>
+  </div>
+  </div>
+  <audio data-key="73" src="./indian.wav"></audio>
+  <audio data-key="65" src="./arabic.wav"></audio>
+  <audio data-key="85" src="./beats.wav"></audio>
+  <audio data-key="74" src="./jumanji.wav"></audio>
+  <audio data-key="75" src="./gangster.wav"></audio>
+  <audio data-key="84" src="./run.wav"></audio>
+  <audio data-key="68" src="./dj.wav"></audio>
+  <audio data-key="71" src="./Crash.mp3"></audio>
+  <audio data-key="66" src="./blink.wav"></audio>
+  <script>
+window.addEventListener("keydown",(e)=>
+{ 
+  var audio=document.querySelector(`audio[data-key="${e.keyCode}"]`)
+  var key=document.querySelector(`.key[data-key="${e.keyCode}"]`)
+ if(audio)
+ {
+   audio.play()
+   audio.currentTime=0
+   key.classList.add("playing")
+ }
+ return
+})
+var kk=document.querySelectorAll(".key")
+kk.forEach((e)=>
+{
+  e.addEventListener('transitionend',remove)
+})
+function remove(k)
+{
+if(k.propertyName="transform")
+{
+  this.classList.remove("playing")
+
+}
+return
+}
+  </script>
+  </body>
+</html>
